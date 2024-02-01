@@ -6,3 +6,13 @@
 /usr/bin/winpr-makecert
 /usr/bin/wlfreerdp
 /usr/bin/xfreerdp
+/usr/include/uwac0/uwac/uwac-tools.h
+/usr/include/uwac0/uwac/uwac.h
+/usr/lib64/cmake/uwac0/uwac-relwithdebinfo.cmake
+/usr/lib64/cmake/uwac0/uwac.cmake
+/usr/lib64/cmake/uwac0/uwacConfig.cmake
+/usr/lib64/cmake/uwac0/uwacConfigVersion.cmake
+/usr/lib64/libuwac0.so
+/usr/lib64/pkgconfig/uwac0.pc
+/usr/lib64/libuwac0.so.0
+/usr/lib64/libuwac0.so.0.2.0

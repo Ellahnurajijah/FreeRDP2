@@ -7,7 +7,7 @@
 #
 Name     : FreeRDP2
 Version  : 2.11.2
-Release  : 42
+Release  : 43
 URL      : https://github.com/FreeRDP/FreeRDP/archive/2.11.2/FreeRDP-2.11.2.tar.gz
 Source0  : https://github.com/FreeRDP/FreeRDP/archive/2.11.2/FreeRDP-2.11.2.tar.gz
 Summary  : Free implementation of the Remote Desktop Protocol (RDP)
@@ -114,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1706801776
+export SOURCE_DATE_EPOCH=1706802058
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -220,7 +220,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1706801776
+export SOURCE_DATE_EPOCH=1706802058
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/FreeRDP2
 cp %{_builddir}/FreeRDP-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/FreeRDP2/2b8b815229aa8a61e483fb4ba0588b8b6c491890 || :
@@ -238,6 +238,16 @@ rm -f %{buildroot}*/usr/bin/winpr-hash
 rm -f %{buildroot}*/usr/bin/winpr-makecert
 rm -f %{buildroot}*/usr/bin/wlfreerdp
 rm -f %{buildroot}*/usr/bin/xfreerdp
+rm -f %{buildroot}*/usr/include/uwac0/uwac/uwac-tools.h
+rm -f %{buildroot}*/usr/include/uwac0/uwac/uwac.h
+rm -f %{buildroot}*/usr/lib64/cmake/uwac0/uwac-relwithdebinfo.cmake
+rm -f %{buildroot}*/usr/lib64/cmake/uwac0/uwac.cmake
+rm -f %{buildroot}*/usr/lib64/cmake/uwac0/uwacConfig.cmake
+rm -f %{buildroot}*/usr/lib64/cmake/uwac0/uwacConfigVersion.cmake
+rm -f %{buildroot}*/usr/lib64/libuwac0.so
+rm -f %{buildroot}*/usr/lib64/pkgconfig/uwac0.pc
+rm -f %{buildroot}*/usr/lib64/libuwac0.so.0
+rm -f %{buildroot}*/usr/lib64/libuwac0.so.0.2.0
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
@@ -393,8 +403,6 @@ rm -f %{buildroot}*/usr/bin/xfreerdp
 /usr/include/freerdp2/freerdp/utils/string.h
 /usr/include/freerdp2/freerdp/version.h
 /usr/include/freerdp2/freerdp/window.h
-/usr/include/uwac0/uwac/uwac-tools.h
-/usr/include/uwac0/uwac/uwac.h
 /usr/include/winpr2/winpr/asn1.h
 /usr/include/winpr2/winpr/assert.h
 /usr/include/winpr2/winpr/bcrypt.h
@@ -486,23 +494,17 @@ rm -f %{buildroot}*/usr/bin/xfreerdp
 /usr/lib64/cmake/WinPR2/WinPRConfigVersion.cmake
 /usr/lib64/cmake/WinPR2/WinPRTargets-relwithdebinfo.cmake
 /usr/lib64/cmake/WinPR2/WinPRTargets.cmake
-/usr/lib64/cmake/uwac0/uwac-relwithdebinfo.cmake
-/usr/lib64/cmake/uwac0/uwac.cmake
-/usr/lib64/cmake/uwac0/uwacConfig.cmake
-/usr/lib64/cmake/uwac0/uwacConfigVersion.cmake
 /usr/lib64/libfreerdp-client2.so
 /usr/lib64/libfreerdp-server2.so
 /usr/lib64/libfreerdp-shadow-subsystem2.so
 /usr/lib64/libfreerdp-shadow2.so
 /usr/lib64/libfreerdp2.so
-/usr/lib64/libuwac0.so
 /usr/lib64/libwinpr-tools2.so
 /usr/lib64/libwinpr2.so
 /usr/lib64/pkgconfig/freerdp-client2.pc
 /usr/lib64/pkgconfig/freerdp-server2.pc
 /usr/lib64/pkgconfig/freerdp-shadow2.pc
 /usr/lib64/pkgconfig/freerdp2.pc
-/usr/lib64/pkgconfig/uwac0.pc
 /usr/lib64/pkgconfig/winpr-tools2.pc
 /usr/lib64/pkgconfig/winpr2.pc
 
@@ -513,7 +515,6 @@ rm -f %{buildroot}*/usr/bin/xfreerdp
 /V3/usr/lib64/libfreerdp-shadow-subsystem2.so.2.11.2
 /V3/usr/lib64/libfreerdp-shadow2.so.2.11.2
 /V3/usr/lib64/libfreerdp2.so.2.11.2
-/V3/usr/lib64/libuwac0.so.0.2.0
 /V3/usr/lib64/libwinpr-tools2.so.2.11.2
 /V3/usr/lib64/libwinpr2.so.2.11.2
 /usr/lib64/libfreerdp-client2.so.2
@@ -526,8 +527,6 @@ rm -f %{buildroot}*/usr/bin/xfreerdp
 /usr/lib64/libfreerdp-shadow2.so.2.11.2
 /usr/lib64/libfreerdp2.so.2
 /usr/lib64/libfreerdp2.so.2.11.2
-/usr/lib64/libuwac0.so.0
-/usr/lib64/libuwac0.so.0.2.0
 /usr/lib64/libwinpr-tools2.so.2
 /usr/lib64/libwinpr-tools2.so.2.11.2
 /usr/lib64/libwinpr2.so.2
