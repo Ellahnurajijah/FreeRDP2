@@ -7,13 +7,12 @@
 #
 Name     : FreeRDP2
 Version  : 2.11.2
-Release  : 41
+Release  : 42
 URL      : https://github.com/FreeRDP/FreeRDP/archive/2.11.2/FreeRDP-2.11.2.tar.gz
 Source0  : https://github.com/FreeRDP/FreeRDP/archive/2.11.2/FreeRDP-2.11.2.tar.gz
 Summary  : Free implementation of the Remote Desktop Protocol (RDP)
 Group    : Development/Tools
 License  : Apache-2.0
-Requires: FreeRDP2-bin = %{version}-%{release}
 Requires: FreeRDP2-lib = %{version}-%{release}
 Requires: FreeRDP2-license = %{version}-%{release}
 Requires: FreeRDP2-man = %{version}-%{release}
@@ -70,20 +69,10 @@ BuildRequires : systemd-dev
 FreeRDP is a open and free implementation of the Remote Desktop Protocol (RDP).
 This package provides nightly master builds of all components.
 
-%package bin
-Summary: bin components for the FreeRDP2 package.
-Group: Binaries
-Requires: FreeRDP2-license = %{version}-%{release}
-
-%description bin
-bin components for the FreeRDP2 package.
-
-
 %package dev
 Summary: dev components for the FreeRDP2 package.
 Group: Development
 Requires: FreeRDP2-lib = %{version}-%{release}
-Requires: FreeRDP2-bin = %{version}-%{release}
 Provides: FreeRDP2-devel = %{version}-%{release}
 Requires: FreeRDP2 = %{version}-%{release}
 
@@ -125,7 +114,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1706801185
+export SOURCE_DATE_EPOCH=1706801776
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -231,7 +220,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1706801185
+export SOURCE_DATE_EPOCH=1706801776
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/FreeRDP2
 cp %{_builddir}/FreeRDP-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/FreeRDP2/2b8b815229aa8a61e483fb4ba0588b8b6c491890 || :
@@ -242,25 +231,17 @@ popd
 pushd clr-build
 %make_install
 popd
+## Remove excluded files
+rm -f %{buildroot}*/usr/bin/freerdp-proxy
+rm -f %{buildroot}*/usr/bin/freerdp-shadow-cli
+rm -f %{buildroot}*/usr/bin/winpr-hash
+rm -f %{buildroot}*/usr/bin/winpr-makecert
+rm -f %{buildroot}*/usr/bin/wlfreerdp
+rm -f %{buildroot}*/usr/bin/xfreerdp
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
-
-%files bin
-%defattr(-,root,root,-)
-/V3/usr/bin/freerdp-proxy
-/V3/usr/bin/freerdp-shadow-cli
-/V3/usr/bin/winpr-hash
-/V3/usr/bin/winpr-makecert
-/V3/usr/bin/wlfreerdp
-/V3/usr/bin/xfreerdp
-/usr/bin/freerdp-proxy
-/usr/bin/freerdp-shadow-cli
-/usr/bin/winpr-hash
-/usr/bin/winpr-makecert
-/usr/bin/wlfreerdp
-/usr/bin/xfreerdp
 
 %files dev
 %defattr(-,root,root,-)

@@ -1,2 +1,8 @@
 # This file contains the output files that need %exclude. Full path
 # names, one per line.
+/usr/bin/freerdp-proxy
+/usr/bin/freerdp-shadow-cli
+/usr/bin/winpr-hash
+/usr/bin/winpr-makecert
+/usr/bin/wlfreerdp
+/usr/bin/xfreerdp
